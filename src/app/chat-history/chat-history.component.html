@@ -8,8 +8,8 @@
         <div class="col-8 Chatbereich" #runter>
             <ng-container class="Nachricht" *ngFor="let message of messages; let i = index">
                 <div class="ChatHistory">
-                    <p [ngStyle]="colora" id="nickName"> </p>
-                        <b>{{message.nickname}}:</b>
+                    <p [ngStyle]="colora" id="nickName" *ngIf="message.username && (!messages[i-1] || messages[i-1].username !== message.username)"> </p>
+                        <b>{{message.username}}:</b>
                     </p>
                     <p>{{message.message}}</p>
                     <p style="font-size: 0.7rem">{{message.date|date:'dd/MMMM/yyyy HH:mm '}}</p>
