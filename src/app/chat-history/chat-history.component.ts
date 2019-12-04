@@ -72,7 +72,7 @@ export class ChatHistoryComponent implements OnInit {
       this.pService.nickname = this.nickname;
       if (this.pService.color == null) {
         this.pService.color = this.pService.getRandomColor();
-        //this.colora = { "color": this.pService.color };
+        this.colora = { "color": this.pService.color };
       }
       else {
         this.newNickname = "Benutzer '" + this.rightnow + "' hat den Nickname zu '" + this.pService.nickname + "' geändert.";
