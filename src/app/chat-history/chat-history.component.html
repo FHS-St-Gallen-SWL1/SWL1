@@ -8,7 +8,7 @@
         <div class="col-8 Chatbereich" #runter>
             <ng-container class="Nachricht" *ngFor="let message of messages; let i = index">
                 <div class="ChatHistory">
-                    <p [ngStyle]="colora" id="nickName" *ngIf="message.username && (!messages[i-1] || messages[i-1].username !== message.username)">
+                    <p [ngStyle]="message.color" id="nickName" *ngIf="message.username && (!messages[i-1] || messages[i-1].username !== message.username)">
                         <b>{{message.username}}:</b>
                     </p>
                     <p>{{message.content}}</p>
@@ -19,7 +19,7 @@
         <div class="col-2 Login">
             <div [class.animated]="!pService.nickname" class="infinite pulse" id="anime">
                 <button class="btn btn-light LoginButton" data-toggle="modal" data-target=".Anmelden">Login</button>
-                <p id="bname">Ihr Benutzername: <br><b [ngStyle]="colora"> {{pService.nickname}}</b> </p>
+                <p id="bname">Ihr Benutzername: <br><b [ngStyle]="message.color"> {{pService.nickname}}</b> </p>
             </div>
             <!-- Modal start -->
             <div class="modal Anmelden" tabindex="-1" role="dialog">

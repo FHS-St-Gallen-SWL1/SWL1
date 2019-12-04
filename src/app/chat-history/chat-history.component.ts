@@ -45,7 +45,7 @@ export class ChatHistoryComponent implements OnInit {
   public addMessage(messageString: string) {
     messageString = messageString.trim();
     if (messageString != "") {
-      const message = new Message(this.pService.nickname, messageString, new Date());
+      const message = new Message(this.pService.nickname, messageString, new Date(), this.pService.color);
       this.chatService.addToHistory(message).subscribe(
         (response: Message) => {
           console.log('REST server gave back ' + response);
@@ -72,11 +72,11 @@ export class ChatHistoryComponent implements OnInit {
       this.pService.nickname = this.nickname;
       if (this.pService.color == null) {
         this.pService.color = this.pService.getRandomColor();
-        this.colora = { "color": this.pService.color };
+        //this.colora = { "color": this.pService.color };
       }
       else {
         this.newNickname = "Benutzer '" + this.rightnow + "' hat den Nickname zu '" + this.pService.nickname + "' geändert.";
-        const benachrichtigung = new Message(null, this.newNickname, null);
+        const benachrichtigung = new Message(null, this.newNickname, null, null);
         this.chatService.addToHistory(benachrichtigung).subscribe(
           (response: Message) => {
             console.log('REST server gave back ' + response);
