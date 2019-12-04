@@ -45,7 +45,7 @@ export class ChatHistoryComponent implements OnInit {
   public addMessage(messageString: string) {
     messageString = messageString.trim();
     if (messageString != "") {
-      const message = new Message(this.pService.nickname, messageString, new Date());
+      const message = new Message(this.nickname, messageString, new Date());
       this.chatService.addToHistory(message).subscribe(
         (response: Message) => {
           console.log('REST server gave back ' + response);
