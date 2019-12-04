@@ -34,8 +34,5 @@ export class PersonService {
     return '#' + ('000000' + myColor).slice(-6);
   }
 
-  public createColorObject() {
-    
-  }
-
+ 
 }
