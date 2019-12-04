@@ -1,0 +1,53 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 blue"></div>
+        <div class="col-8 Chatbereich" #runter>
+            <ng-container class="Nachricht" *ngFor="let message of messages; let i = index">
+                <div class="ChatHistory">
+                    <p [ngStyle]="colora" id="nickName" *ngIf="message.nickname && (!messages[i-1] || messages[i-1].nickname !== message.nickname)">
+                        <b>{{message.nickname}}:</b>
+                    </p>
+                    <p>{{message.message}}</p>
+                    <p style="font-size: 0.7rem">{{message.date|date:'dd/MMMM/yyyy HH:mm '}}</p>
+                </div>
+            </ng-container>
+        </div>
+        <div class="col-2 Login">
+            <div [class.animated]="!pService.nickname" class="infinite pulse" id="anime">
+                <button class="btn btn-light LoginButton" data-toggle="modal" data-target=".Anmelden">Login</button>
+                <p id="bname">Ihr Benutzername: <br><b [ngStyle]="colora"> {{pService.nickname}}</b> </p>
+            </div>
+            <!-- Modal start -->
+            <div class="modal Anmelden" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title SaveTitle">Tragen Sie Ihren Benutzernamen ein</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form" id="newModalForm">
+                                <div class="form-group">
+                                    <p id="modal-info"> Benutzername besteht aus Min. 3 Zeichen, Max. 12 Zeichen und 2
+                                        Sonderzeichen(-/.)</p>
+                                    <input type="text" required value="" name="nickname" class="form-control"
+                                        placeholder="Ihr Benutzername..." [(ngModel)]='nickname' />
+                                </div>
+                                <div class="form-group">
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-dark SaveBtn" data-dismiss="modal"
+                                            (click)='acceptName();'>Speichern</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal ende -->
+        </div>
+    </div>
+</div>

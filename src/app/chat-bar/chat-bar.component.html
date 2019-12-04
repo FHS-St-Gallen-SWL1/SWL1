@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="row" id="row2">
+    <div class="col-2 blue"></div>
+    <div class="col-8 bordertop input-group mb-3">
+        <textarea [disabled]="!pService.nickname" rows="2" class="form-control" id="msgbox" [(ngModel)]='msgbox' name="msgbox"  (keyup.enter)="onSendClicked()" placeholder="Geben Sie hier ihre Nachricht ein" maxlength="1000"></textarea>
+        <div class="input-group-append">
+          <button [hidden]="!msgbox" class="btn btn-outline-dark  text-right" (click)='onSendClicked();'
+          id="button">Senden</button>
+        </div>
+    </div>
+    <div class="col-2 Login"></div>
+  </div>
+</div>

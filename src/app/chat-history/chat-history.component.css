@@ -1,0 +1,64 @@
+.blue {
+    background-color: rgb(64, 64, 64);
+    padding: 0px;
+}
+
+.Chatbereich {
+    background-color: white;
+    padding: 0px;
+    height: 350px;
+    overflow-y: scroll;
+    float: right;
+}
+
+#ctrlbox {
+    position: absolute;
+    bottom: 0;
+    margin-left: 12.1px;
+    margin-bottom: 0px;
+}
+
+.ChatHistory {
+    background-color: rgb(64, 64, 64);
+    margin: 10px;   
+    padding: 10px;
+    width: 400px;
+    border-radius: 20px;
+    color: white;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.5;
+    position: relative;
+    float: right;
+    clear: right;
+}
+
+.ChatHistory p {
+    margin-bottom: 0;
+}
+
+.Login{
+    background-color: rgb(64, 64, 64);
+    text-align: center;
+}
+.LoginButton{
+    width: inherit;
+    margin-top: 15px;
+
+}
+
+#modal-info{
+    margin: 16px;
+}
+
+#bname{
+    color: white;
+}
+
+.SaveBtn{
+    margin: auto;
+}
+
+.SaveTitle{
+    margin: 10px;
+}

@@ -1,0 +1,38 @@
+* {
+    height: auto;
+ 
+}
+
+#msgbox {
+    margin: 10px;   
+    padding: 0px;
+    height: auto;
+}
+
+#button {
+    margin: 10px;
+    
+}
+
+.blue {
+    background-color: rgb(64, 64, 64);
+}
+
+.grey {
+    background-color: white;
+}
+
+.row {
+    background-color: white;
+}
+
+.bordertop {
+    border-top: solid gray 1px;
+}
+
+.Login{
+    background-color: rgb(64, 64, 64);
+}
+
+
+
