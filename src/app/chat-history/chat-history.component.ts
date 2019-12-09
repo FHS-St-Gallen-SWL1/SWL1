@@ -36,7 +36,7 @@ export class ChatHistoryComponent implements OnInit {
   }
 
   public scrollen() {
-    window.setTimeout(() => this.runter.nativeElement.scrollTop = this.runter.nativeElement.scrollHeight, 10);
+    window.setTimeout(() => this.runter.nativeElement.scrollTop = this.runter.nativeElement.scrollHeight, 2000);
     /*if (this.messages.length > 10) {
       this.messages.splice(0, 1);
     }*/
@@ -52,7 +52,7 @@ export class ChatHistoryComponent implements OnInit {
         }
       )
     }
-    //this.scrollen();
+    this.scrollen();
   }
 
   x = setInterval(()=>{
@@ -61,14 +61,14 @@ export class ChatHistoryComponent implements OnInit {
     if (this.messages.length >11){
       this.messages.splice(0,this.messages.length-10);
     }
-    this.scrollen();
+    //this.scrollen();
   })
   
 },2000);
 
   public acceptName() {
     this.rightnow = this.pService.nickname;
-    if (this.nickname.match("[^\ ]{3,12}$")) { 
+    if (this.nickname.match("^(?=.*?[0-9])|(?=.*?[A-Za-z])|(?=.*?[öäüéàè]).{3,12}$")) { 
       this.pService.nickname = this.nickname;
       if (this.pService.color == null) {
         this.pService.color = this.pService.getRandomColor();
@@ -83,7 +83,7 @@ export class ChatHistoryComponent implements OnInit {
           }
         )
         //this.messages.push(benachrichtigung);
-        //this.scrollen();
+        this.scrollen();
       }
     }
     else {
