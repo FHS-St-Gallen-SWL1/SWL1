@@ -68,7 +68,7 @@ export class ChatHistoryComponent implements OnInit {
 
   public acceptName() {
     this.rightnow = this.pService.nickname;
-    if (this.nickname.match("^[a-zA-Z0-9._\-]{3,12}$")) {
+    if (this.nickname.match("[^\ ]{3,12}$")) { 
       this.pService.nickname = this.nickname;
       if (this.pService.color == null) {
         this.pService.color = this.pService.getRandomColor();
