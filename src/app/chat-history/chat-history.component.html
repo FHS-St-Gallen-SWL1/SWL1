@@ -6,10 +6,8 @@
     <div class="row">
         <div class="col-2 activeUsers">
             <p class="list">Active Users:</p>
-            <ng-container class="list">
-                <p>
-                    
-                </p>
+            <ng-container class="list" *ngFor="let nickname of nicknames; let i = index">
+                <p>{{nickname.username}}</p>
             </ng-container>
         </div>
         <div class="col-8 Chatbereich" #runter>

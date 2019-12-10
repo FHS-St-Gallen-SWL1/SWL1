@@ -22,6 +22,7 @@ export class ChatHistoryComponent implements OnInit {
 
 
   public messages: Message[] = [];
+  public nicknames: Nickname[] = [];
   public trim: string;
   public msgbox: string;
   public name: string;
@@ -64,6 +65,14 @@ export class ChatHistoryComponent implements OnInit {
     }
     //this.scrollen();
   })
+
+  this.chatService.getNickname().subscribe((response: Nickname[]) => {
+    this.nicknames =response;
+    //this.scrollen();
+  })
+
+
+
   
 },2000);
 
