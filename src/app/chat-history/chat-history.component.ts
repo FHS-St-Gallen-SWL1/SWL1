@@ -70,9 +70,6 @@ export class ChatHistoryComponent implements OnInit {
     this.nicknames =response;
     //this.scrollen();
   })
-
-
-
   
 },2000);
 
