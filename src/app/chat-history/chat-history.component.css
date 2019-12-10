@@ -1,6 +1,13 @@
-.blue {
+.activeUsers {
     background-color: rgb(64, 64, 64);
     padding: 0px;
+    color: white;
+    
+}
+
+.list {
+    margin-top: 15px;
+    margin-left: 15px;
 }
 
 .Chatbereich {

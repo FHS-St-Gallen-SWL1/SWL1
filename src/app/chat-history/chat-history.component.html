@@ -4,7 +4,9 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-2 blue"></div>
+        <div class="col-2 activeUsers">
+            <p class="list">Active Users:</p>
+        </div>
         <div class="col-8 Chatbereich" #runter>
             <ng-container class="Nachricht" *ngFor="let message of messages; let i = index">
                 <div class="ChatHistory">
