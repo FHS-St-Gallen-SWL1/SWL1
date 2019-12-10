@@ -3,6 +3,7 @@ import { PersonService } from '../person.service';
 import { NgStyle } from '@angular/common';
 import { Message } from '../message';
 import { ChatService } from '../chat.service';
+import { Nickname } from '../nickname';
 
 
 @Component({
@@ -70,6 +71,12 @@ export class ChatHistoryComponent implements OnInit {
       this.rightnow = this.pService.nickname;
     if (this.nickname.match("^(?=.*?[0-9])|(?=.*?[A-Za-z])|(?=.*?[öäüéàè]){3,12}$")) { 
       this.pService.nickname = this.nickname;
+      const nickname = new Nickname(this.pService.nickname);
+      this.chatService.addNickname(nickname).subscribe(
+        (response: Nickname) => {
+          console.log('REST server gave back ' + response);
+        }
+      )
       if (this.pService.color == null) {
         this.pService.color = this.pService.getRandomColor();
         this.colora = { "color": this.pService.color };
