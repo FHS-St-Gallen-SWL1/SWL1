@@ -1,18 +1,19 @@
+:host {
+    flex: 1;
+    height: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
 .activeUsers {
     background-color: rgb(64, 64, 64);
     padding-left: 20px;
     padding-top: 10px;
     color: white;
-    overflow-y: scroll;
-    height: 350px;
-}
-
-.Chatbereich {
-    background-color: white;
-    padding: 0px;
-    height: 350px;
-    overflow-y: scroll;
-    float: right;
+    overflow-y: auto;
+    height: 100%;
 }
 
 #ctrlbox {
@@ -22,9 +23,16 @@
     margin-bottom: 0px;
 }
 
+.chat-wrapper {
+    height: 100%;
+    overflow-y: auto;
+}
+
 .Chatbereich {
     display: flex;
     flex-direction: column;
+    background-color: white;
+    padding: 0px;
 }
 
 .ChatHistory {
