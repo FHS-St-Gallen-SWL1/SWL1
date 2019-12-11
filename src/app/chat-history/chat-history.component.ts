@@ -53,9 +53,11 @@ export class ChatHistoryComponent implements OnInit {
         (response: Message) => {
           console.log('REST server gave back ' + response);
         }
+        
       )
+      this.scrollen();
     }
-    this.scrollen();
+   
   }
 
   /*
@@ -87,10 +89,13 @@ export class ChatHistoryComponent implements OnInit {
         this.messages = response;
         if (this.messages.length > 11) {
           this.messages.splice(0, this.messages.length - 10);
+          this.scrollen();
         }
+        this.scrollen();
       })
-
       this.chatService.localhistorylength = this.historysize;
+      this.scrollen();
+      
     }
     this.chatService.getNickname().subscribe((response: Nickname[]) => {
       this.nicknames = response;
