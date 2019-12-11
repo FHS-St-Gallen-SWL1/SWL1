@@ -43,5 +43,12 @@ export class ChatService {
     return this.http.post<Nickname>(this.actionUrl + 'nicknames', nickname, options);
   }
 
+  public changeNickname(changeusername: Object): Observable<Object> {
+    const options = {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+    };
+    return this.http.post<Object>(this.actionUrl +'changenickname', changeusername, options );
+  }
+
 }
 

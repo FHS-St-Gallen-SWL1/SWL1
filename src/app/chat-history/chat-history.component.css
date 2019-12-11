@@ -1,7 +1,10 @@
 .activeUsers {
     background-color: rgb(64, 64, 64);
-    padding: 0px;
+    padding-left: 20px;
+    padding-top: 10px;
     color: white;
+    overflow-y: scroll;
+    height: 350px;
 }
 
 .Chatbereich {
