@@ -81,12 +81,12 @@ export class ChatHistoryComponent implements OnInit {
       if (this.pService.color == null) {
         this.pService.color = this.pService.getRandomColor();
         this.colora = { "color": this.pService.color };
-        const nickname = new Nickname(this.pService.nickname);
+        /*const nickname = new Nickname(this.pService.nickname);
         this.chatService.addNickname(nickname).subscribe(
           (response: Nickname) => {
             console.log('REST server gave back ' + response);
           }
-        )
+        )*/
 
       }
       else {
@@ -97,11 +97,6 @@ export class ChatHistoryComponent implements OnInit {
             console.log('REST server gave back ' + response);
           }
         )
-
-        this.chatService.getNicknameID().subscribe((response: Nickname[]) => {
-          this.nicknames = response;
-        })
-        
 
         this.scrollen();
       }
