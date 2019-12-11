@@ -47,7 +47,7 @@ export class ChatService {
     const options = {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
     };
-    return this.http.post<Object>(this.actionUrl +'changenickname', changeusername, options );
+    return this.http.post<Object>(this.actionUrl + 'changenickname', changeusername, options );
   }
 
 }
