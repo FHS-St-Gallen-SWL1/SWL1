@@ -31,6 +31,10 @@ export class ChatService {
     return this.http.get<Array<Nickname>>(this.actionUrl+'nicknames');
   }
 
+  public getNicknameID(): Observable<Array<Nickname>>{
+    return this.http.get<Array<Nickname>>(this.actionUrl+'/nicknames/:id');
+  }
+
   public addNickname(nickname:Nickname): Observable<Nickname> {
     const options = {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),

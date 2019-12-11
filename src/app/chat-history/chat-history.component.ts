@@ -57,35 +57,35 @@ export class ChatHistoryComponent implements OnInit {
     this.scrollen();
   }
 
-  x = setInterval(()=>{
+  x = setInterval(() => {
     this.chatService.getHistory().subscribe((response: Message[]) => {
-    this.messages =response;
-    if (this.messages.length >11){
-      this.messages.splice(0,this.messages.length-10);
-    }
-    //this.scrollen();
-  })
+      this.messages = response;
+      if (this.messages.length > 11) {
+        this.messages.splice(0, this.messages.length - 10);
+      }
+      //this.scrollen();
+    })
 
-  this.chatService.getNickname().subscribe((response: Nickname[]) => {
-    this.nicknames =response;
-    //this.scrollen();
-  })
-  
-},2000);
+    this.chatService.getNickname().subscribe((response: Nickname[]) => {
+      this.nicknames = response;
+    })
 
-  public acceptName() { 
-      this.rightnow = this.pService.nickname;
-    if (this.nickname.match("^(?=.*?[0-9])|(?=.*?[A-Za-z])|(?=.*?[öäüéàè]){3,12}$")) { 
+  }, 2000);
+
+  public acceptName() {
+    this.rightnow = this.pService.nickname;
+    if (this.nickname.match("^(?=.*?[0-9])|(?=.*?[A-Za-z])|(?=.*?[öäüéàè]){3,12}$")) {
       this.pService.nickname = this.nickname;
-      const nickname = new Nickname(this.pService.nickname);
-      this.chatService.addNickname(nickname).subscribe(
-        (response: Nickname) => {
-          console.log('REST server gave back ' + response);
-        }
-      )
+      
       if (this.pService.color == null) {
         this.pService.color = this.pService.getRandomColor();
         this.colora = { "color": this.pService.color };
+        const nickname = new Nickname(this.pService.nickname);
+        this.chatService.addNickname(nickname).subscribe(
+          (response: Nickname) => {
+            console.log('REST server gave back ' + response);
+          }
+        )
       }
       else {
         this.newNickname = "Benutzer '" + this.rightnow + "' hat den Nickname zu '" + this.pService.nickname + "' geändert.";
