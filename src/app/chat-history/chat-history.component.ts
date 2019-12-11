@@ -30,6 +30,7 @@ export class ChatHistoryComponent implements OnInit {
   public colora: object;
   public rightnow: string;
   public newNickname: string;
+  public historysize: Object;
 
 
 
@@ -57,6 +58,7 @@ export class ChatHistoryComponent implements OnInit {
     this.scrollen();
   }
 
+  /*
   x = setInterval(() => {
     this.chatService.getHistory().subscribe((response: Message[]) => {
       this.messages = response;
@@ -70,7 +72,29 @@ export class ChatHistoryComponent implements OnInit {
       this.nicknames = response;
     })
 
+  }, 2000);*/
+
+  
+
+  x = setInterval(() => {
+    this.chatService.getHistoryLength().subscribe((response: Object) => {
+      this.historysize = response;
+    })
+
+    if (JSON.stringify(this.historysize) === JSON.stringify(this.chatService.localhistorylength)) {
+    } else {
+      this.chatService.getHistory().subscribe((response: Message[]) => {
+        this.messages = response;
+        if (this.messages.length > 11) {
+          this.messages.splice(0, this.messages.length - 10);
+        }
+      })
+      this.chatService.localhistorylength = this.historysize;
+    }
+
   }, 2000);
+
+
 
   public acceptName() {
     this.rightnow = this.pService.nickname;

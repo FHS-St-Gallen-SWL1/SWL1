@@ -50,5 +50,18 @@ export class ChatService {
     return this.http.post<Object>(this.actionUrl + 'changenickname', changeusername, options );
   }
 
+  private localHistoryLength: Object;
+
+  public get localhistorylength(): Object{
+    return this.localHistoryLength;
+  }
+  public set localhistorylength(value: Object){
+    this.localHistoryLength = value;
+  }
+
+  public getHistoryLength(): Observable<Object>{
+    return this.http.get<Object>(this.actionUrl +'historylength');
+  }
+
 }
 
