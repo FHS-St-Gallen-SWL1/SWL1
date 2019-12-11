@@ -23,6 +23,7 @@ export class ChatHistoryComponent implements OnInit {
 
   public messages: Message[] = [];
   public nicknames: Nickname[] = [];
+  public id: Nickname[]=[];
   public trim: string;
   public msgbox: string;
   public name: string;
@@ -76,16 +77,17 @@ export class ChatHistoryComponent implements OnInit {
     this.rightnow = this.pService.nickname;
     if (this.nickname.match("^(?=.*?[0-9])|(?=.*?[A-Za-z])|(?=.*?[öäüéàè]){3,12}$")) {
       this.pService.nickname = this.nickname;
-      
+      const nickname = new Nickname(this.pService.nickname, null);
+      this.chatService.addNickname(nickname).subscribe(
+        (response: Nickname) => {
+          console.log('REST server gave back ' + response);
+        }
+      )
+
       if (this.pService.color == null) {
         this.pService.color = this.pService.getRandomColor();
         this.colora = { "color": this.pService.color };
-        const nickname = new Nickname(this.pService.nickname);
-        this.chatService.addNickname(nickname).subscribe(
-          (response: Nickname) => {
-            console.log('REST server gave back ' + response);
-          }
-        )
+
       }
       else {
         this.newNickname = "Benutzer '" + this.rightnow + "' hat den Nickname zu '" + this.pService.nickname + "' geändert.";
@@ -95,7 +97,12 @@ export class ChatHistoryComponent implements OnInit {
             console.log('REST server gave back ' + response);
           }
         )
-        //this.messages.push(benachrichtigung);
+
+        this.chatService.getNicknameID().subscribe((response: Nickname[]) => {
+          this.nicknames = response;
+        })
+        
+
         this.scrollen();
       }
     }
