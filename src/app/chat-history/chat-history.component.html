@@ -2,26 +2,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 </head>
 
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid full-height">
+    <div class="row full-height">
         <div class="col-2 activeUsers">
             <p class="list">Active Users:</p>
             <ng-container class="list" *ngFor="let nickname of nicknames; let i = index">
                 <p>{{nickname.username}}</p>
             </ng-container>
         </div>
-        <div class="col-8 Chatbereich" #runter>
-            <ng-container class="Nachricht" *ngFor="let message of messages; let i = index">
-                <div [class.left]="message.username && message.username !== nickname" [class.center]="!message.username"
-                    class="ChatHistory">
-                    <p [ngStyle]="{color:message.color}" id="nickName"
-                        *ngIf="message.username && (!messages[i-1] || messages[i-1].username !== message.username)">
-                        <b>{{message.username}}:</b>
-                    </p>
-                    <p>{{message.content}}</p>
-                    <p style="font-size: 0.7rem">{{message.timestamp|date:'dd. MMMM yyyy, HH:mm'}}</p>
-                </div>
-            </ng-container>
+        <div class="col-8 chat-wrapper">
+            <div class="Chatbereich" #runter>
+                <ng-container class="Nachricht" *ngFor="let message of messages; let i = index">
+                    <div [class.left]="message.username && message.username !== nickname" [class.center]="!message.username"
+                        class="ChatHistory">
+                        <p [ngStyle]="{color:message.color}" id="nickName"
+                            *ngIf="message.username && (!messages[i-1] || messages[i-1].username !== message.username)">
+                            <b>{{message.username}}:</b>
+                        </p>
+                        <p>{{message.content}}</p>
+                        <p style="font-size: 0.7rem">{{message.timestamp|date:'dd. MMMM yyyy, HH:mm'}}</p>
+                    </div>
+                </ng-container>
+            </div>
         </div>
         <div class="col-2 Login">
             <div [class.animated]="!pService.nickname" class="infinite pulse" id="anime">
