@@ -1,6 +1,6 @@
 export class Nickname {
 
-    constructor(public username: string, public id:string) {
+    constructor(public username: string) {
     }
 
 }

@@ -33,7 +33,7 @@ export class ChatService {
   }
 
   public getNicknameID(): Observable<Array<Nickname>> {
-    return this.http.get<Array<Nickname>>(this.actionUrl + '/nicknames/:id');
+    return this.http.get<Array<Nickname>>(this.actionUrl + 'nicknames/:id');
   }
 
   public addNickname(nickname: Nickname): Observable<Nickname> {
