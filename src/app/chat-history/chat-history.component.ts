@@ -89,9 +89,12 @@ export class ChatHistoryComponent implements OnInit {
           this.messages.splice(0, this.messages.length - 10);
         }
       })
+
       this.chatService.localhistorylength = this.historysize;
     }
-
+    this.chatService.getNickname().subscribe((response: Nickname[]) => {
+      this.nicknames = response;
+    })
   }, 2000);
 
 
