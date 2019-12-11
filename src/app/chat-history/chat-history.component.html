@@ -12,7 +12,8 @@
         </div>
         <div class="col-8 Chatbereich" #runter>
             <ng-container class="Nachricht" *ngFor="let message of messages; let i = index">
-                <div class="ChatHistory">
+                <div [class.left]="message.username && message.username !== nickname" [class.center]="!message.username"
+                    class="ChatHistory">
                     <p [ngStyle]="{color:message.color}" id="nickName"
                         *ngIf="message.username && (!messages[i-1] || messages[i-1].username !== message.username)">
                         <b>{{message.username}}:</b>
