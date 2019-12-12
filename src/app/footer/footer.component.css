@@ -1,4 +1,14 @@
 :host {
     background-color: rgb(46, 46, 46);
     height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#footer-text {
+    color: white;
+    text-align: center;
+    margin-bottom: 0px;
+
 }

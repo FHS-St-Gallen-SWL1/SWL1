@@ -10,8 +10,8 @@
                 <p>{{nickname.username}}</p>
             </ng-container>
         </div>
-        <div class="col-8 chat-wrapper">
-            <div class="Chatbereich" #runter>
+        <div class="col-8 chat-wrapper" #runter>
+            <div class="Chatbereich">
                 <ng-container class="Nachricht" *ngFor="let message of messages; let i = index">
                     <div [class.left]="message.username && message.username !== nickname" [class.center]="!message.username"
                         class="ChatHistory">

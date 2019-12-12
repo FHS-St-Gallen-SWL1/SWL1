@@ -39,14 +39,14 @@ export class ChatHistoryComponent implements OnInit {
   }
 
   public scrollen() {
-    window.setTimeout(() => this.runter.nativeElement.scrollTop = this.runter.nativeElement.scrollHeight, 2000);
+    window.setTimeout(() => this.runter.nativeElement.scrollTop = this.runter.nativeElement.scrollHeight, 25);
     /*if (this.messages.length > 10) {
       this.messages.splice(0, 1);
     }*/
   }
 
   public addMessage(messageString: string) {
-    this.scrollen();
+    //this.scrollen();
     messageString = messageString.trim();
     if (messageString != "") {
       const message = new Message(this.pService.nickname, messageString, new Date(), this.pService.color);
@@ -85,6 +85,10 @@ export class ChatHistoryComponent implements OnInit {
     if (JSON.stringify(this.historysize) === JSON.stringify(this.chatService.localhistorylength)) {
     } else {
       this.chatService.getHistory().subscribe((response: Message[]) => {
+        if (!this.messages || this.messages[this.messages.length-1] !== response[response.length-1]) {
+          this.scrollen();
+        }
+
         this.messages = response;
         if (this.messages.length > 11) {
           this.messages.splice(0, this.messages.length - 10);
@@ -101,7 +105,7 @@ export class ChatHistoryComponent implements OnInit {
 
 
   public acceptName() {
-    this.scrollen();
+    //this.scrollen();
     this.rightnow = this.pService.nickname;
     if (this.nickname.match("^(\\w)\\S{2,11}$")) {
       this.pService.nickname = this.nickname;
