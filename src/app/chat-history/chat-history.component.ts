@@ -46,6 +46,7 @@ export class ChatHistoryComponent implements OnInit {
   }
 
   public addMessage(messageString: string) {
+    this.scrollen();
     messageString = messageString.trim();
     if (messageString != "") {
       const message = new Message(this.pService.nickname, messageString, new Date(), this.pService.color);
@@ -53,11 +54,9 @@ export class ChatHistoryComponent implements OnInit {
         (response: Message) => {
           console.log('REST server gave back ' + response);
         }
-        
+
       )
-      this.scrollen();
     }
-   
   }
 
   /*
@@ -76,7 +75,7 @@ export class ChatHistoryComponent implements OnInit {
 
   }, 2000);*/
 
-  
+
 
   x = setInterval(() => {
     this.chatService.getHistoryLength().subscribe((response: Object) => {
@@ -89,13 +88,10 @@ export class ChatHistoryComponent implements OnInit {
         this.messages = response;
         if (this.messages.length > 11) {
           this.messages.splice(0, this.messages.length - 10);
-          this.scrollen();
         }
-        this.scrollen();
       })
       this.chatService.localhistorylength = this.historysize;
-      this.scrollen();
-      
+
     }
     this.chatService.getNickname().subscribe((response: Nickname[]) => {
       this.nicknames = response;
@@ -105,8 +101,9 @@ export class ChatHistoryComponent implements OnInit {
 
 
   public acceptName() {
+    this.scrollen();
     this.rightnow = this.pService.nickname;
-    if (this.nickname.match("^(?=.*?[0-9])|(?=.*?[A-Za-z])|(?=.*?[öäüéàè]){3,12}$")) {
+    if (this.nickname.match("^(\\w)\\S{2,11}$")) {
       this.pService.nickname = this.nickname;
 
       if (this.pService.color == null) {
@@ -133,7 +130,6 @@ export class ChatHistoryComponent implements OnInit {
           }
         )
 
-        this.scrollen();
       }
     }
     else {
