@@ -38,15 +38,14 @@ export class ChatHistoryComponent implements OnInit {
 
   }
 
+  //Scroll Function
   public scrollen() {
     window.setTimeout(() => this.runter.nativeElement.scrollTop = this.runter.nativeElement.scrollHeight, 25);
-    /*if (this.messages.length > 10) {
-      this.messages.splice(0, 1);
-    }*/
+  
   }
 
+  //Add Messages Function
   public addMessage(messageString: string) {
-    //this.scrollen();
     messageString = messageString.trim();
     if (messageString != "") {
       const message = new Message(this.pService.nickname, messageString, new Date(), this.pService.color);
@@ -59,29 +58,13 @@ export class ChatHistoryComponent implements OnInit {
     }
   }
 
-  /*
-  x = setInterval(() => {
-    this.chatService.getHistory().subscribe((response: Message[]) => {
-      this.messages = response;
-      if (this.messages.length > 11) {
-        this.messages.splice(0, this.messages.length - 10);
-      }
-      //this.scrollen();
-    })
-
-    this.chatService.getNickname().subscribe((response: Nickname[]) => {
-      this.nicknames = response;
-    })
-
-  }, 2000);*/
-
 
 
   x = setInterval(() => {
     this.chatService.getHistoryLength().subscribe((response: Object) => {
       this.historysize = response;
     })
-
+//Compare Nicknames: Falls bereits vorhanden wird der alte Nickname überschrieben
     if (JSON.stringify(this.historysize) === JSON.stringify(this.chatService.localhistorylength)) {
     } else {
       this.chatService.getHistory().subscribe((response: Message[]) => {
@@ -89,6 +72,7 @@ export class ChatHistoryComponent implements OnInit {
           this.scrollen();
         }
 
+        //11 Message entfernen
         this.messages = response;
         if (this.messages.length > 11) {
           this.messages.splice(0, this.messages.length - 10);
@@ -103,13 +87,13 @@ export class ChatHistoryComponent implements OnInit {
   }, 2000);
 
 
-
+//Eingabe Nickname
   public acceptName() {
-    //this.scrollen();
     this.rightnow = this.pService.nickname;
+    //Überprüfung ob iO
     if (this.nickname.match("^(\\w)\\S{2,11}$")) {
       this.pService.nickname = this.nickname;
-
+//Farbe setzten falls noch keine gesetzt wurde
       if (this.pService.color == null) {
         this.pService.color = this.pService.getRandomColor();
         this.colora = { "color": this.pService.color };
@@ -121,6 +105,7 @@ export class ChatHistoryComponent implements OnInit {
         )
       }
       else {
+        //Benachrichtigung Namensänderung
         this.newNickname = "Benutzer '" + this.rightnow + "' hat den Nickname zu '" + this.pService.nickname + "' geändert.";
         const benachrichtigung = new Message(null, this.newNickname, null, null);
         this.chatService.addToHistory(benachrichtigung).subscribe(
@@ -128,6 +113,7 @@ export class ChatHistoryComponent implements OnInit {
             console.log('REST server gave back ' + response);
           }
         )
+        //hole aktive User
         this.chatService.changeNickname({ "usernameold": this.rightnow, "username": this.pService.nickname }).subscribe(
           (response: Object) => {
             console.log('REST server gave back ' + response);
@@ -137,6 +123,7 @@ export class ChatHistoryComponent implements OnInit {
       }
     }
     else {
+      //Meldung ungültiger Nickname
       this.nickname = null;
       alert("Dies ist kein gültiger Nickname!");
     }

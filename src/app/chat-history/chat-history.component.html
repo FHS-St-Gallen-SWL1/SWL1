@@ -4,12 +4,14 @@
 
 <div class="container-fluid full-height">
     <div class="row full-height">
+        <!-- Active Users -->
         <div class="col-2 activeUsers">
             <p><b>Active Users:</b></p>
             <ng-container class="list" *ngFor="let nickname of nicknames; let i = index">
                 <p>{{nickname.username}}</p>
             </ng-container>
         </div>
+        <!-- Chatbereich -->
         <div class="col-8 chat-wrapper" #runter>
             <div class="Chatbereich">
                 <ng-container class="Nachricht" *ngFor="let message of messages; let i = index">
@@ -25,6 +27,7 @@
                 </ng-container>
             </div>
         </div>
+        <!-- Login Button -->
         <div class="col-2 Login">
             <div [class.animated]="!pService.nickname" class="infinite pulse" id="anime">
                 <button class="btn btn-light LoginButton" data-toggle="modal" data-target=".Anmelden">Login</button>
