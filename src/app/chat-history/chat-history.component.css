@@ -26,7 +26,6 @@
 
 .chat-wrapper {
     height: 100%;
-    /*max-height: 400px;*/
     overflow-y: auto;
 }
 
