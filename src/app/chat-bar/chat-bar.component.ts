@@ -23,7 +23,7 @@ export class ChatBarComponent implements OnInit {
   public nname: string;
 
   ngOnInit() {
-    //this.pService.currentName.subscribe(name => this.name = name)
+    
   }
 
  
