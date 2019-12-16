@@ -53,9 +53,6 @@ export class ChatService {
   //History check
   private localHistoryLength: Object;
 
-  public get localhistorylength(): Object{
-    return this.localHistoryLength;
-  }
   public set localhistorylength(value: Object){
     this.localHistoryLength = value;
   }
