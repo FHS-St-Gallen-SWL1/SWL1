@@ -58,8 +58,6 @@ export class ChatHistoryComponent implements OnInit {
     }
   }
 
-
-
   x = setInterval(() => {
     this.chatService.getHistoryLength().subscribe((response: Object) => {
       this.historysize = response;
@@ -93,10 +91,11 @@ export class ChatHistoryComponent implements OnInit {
     //Überprüfung ob iO
     if (this.nickname.match("^(\\w)\\S{2,11}$")) {
       this.pService.nickname = this.nickname;
-//Farbe setzten falls noch keine gesetzt wurde
+      //Farbe setzten falls noch keine gesetzt wurde
       if (this.pService.color == null) {
         this.pService.color = this.pService.getRandomColor();
         this.colora = { "color": this.pService.color };
+        //send Nickname an Aktive Users
         const nickname = new Nickname(this.pService.nickname, null);
         this.chatService.addNickname(nickname).subscribe(
           (response: Nickname) => {
@@ -113,7 +112,7 @@ export class ChatHistoryComponent implements OnInit {
             console.log('REST server gave back ' + response);
           }
         )
-        //hole aktive User
+        //ändere Aktive User
         this.chatService.changeNickname({ "usernameold": this.rightnow, "username": this.pService.nickname }).subscribe(
           (response: Object) => {
             console.log('REST server gave back ' + response);
