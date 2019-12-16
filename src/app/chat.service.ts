@@ -50,6 +50,7 @@ export class ChatService {
     return this.http.post<Object>(this.actionUrl + 'changenickname', changeusername, options );
   }
 
+  //History check
   private localHistoryLength: Object;
 
   public get localhistorylength(): Object{

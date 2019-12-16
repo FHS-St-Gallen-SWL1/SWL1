@@ -64,7 +64,7 @@ export class ChatHistoryComponent implements OnInit {
     this.chatService.getHistoryLength().subscribe((response: Object) => {
       this.historysize = response;
     })
-//Compare Nicknames: Falls bereits vorhanden wird der alte Nickname überschrieben
+//Compare History Length: Falls länge nicht mehr gleiche, hole neue History
     if (JSON.stringify(this.historysize) === JSON.stringify(this.chatService.localhistorylength)) {
     } else {
       this.chatService.getHistory().subscribe((response: Message[]) => {
